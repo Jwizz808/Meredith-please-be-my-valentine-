@@ -6,26 +6,29 @@
 
 <style>
 
+/* BACKGROUND */
+
 body{
     margin:0;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
     font-family:Arial, sans-serif;
     background:linear-gradient(135deg,#ff9a9e,#fad0c4);
-    overflow:auto; /* allows scrolling */
 }
 
 /* QUESTION SCREEN */
 
 .container{
     text-align:center;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 }
 
 h1{
     font-size:3rem;
     color:white;
+    margin-bottom:10px;
 }
 
 button{
@@ -44,7 +47,7 @@ button{
 }
 
 #yes:hover{
-    transform:scale(1.08);
+    transform:scale(1.1);
 }
 
 #no{
@@ -53,34 +56,41 @@ button{
     position:absolute;
 }
 
-/* GALLERY */
+/* GALLERY PAGE */
 
 .gallery{
     display:none;
     flex-direction:column;
     align-items:center;
     text-align:center;
+    padding:80px 20px;
+}
+
+.gallery h1{
+    margin-bottom:0;
 }
 
 .gallery p{
     color:white;
     font-size:1.4rem;
+    margin-top:5px;
 }
 
-/* PHOTO ROW (THIS FORCES HORIZONTAL) */
+/* PHOTO ROW */
 
 .photo-row{
     display:flex;
     justify-content:center;
+    align-items:flex-start;
     gap:50px;
-    margin-top:30px;
-    flex-wrap:wrap; /* wraps nicely on smaller screens */
+    margin-top:40px;
+    flex-wrap:wrap; /* mobile friendly */
 }
 
 /* PHOTO CARDS */
 
 .photo-card{
-    width:300px;
+    width:280px;
 }
 
 .photo-card p{
@@ -94,13 +104,13 @@ button{
 img{
     width:100%;
     border-radius:20px;
-    margin-top:10px;
+    margin-top:12px;
     box-shadow:0 10px 25px rgba(0,0,0,.25);
     transition:.3s;
 }
 
 img:hover{
-    transform:scale(1.07);
+    transform:scale(1.08);
 }
 
 </style>
@@ -110,7 +120,7 @@ img:hover{
 
 <!-- QUESTION -->
 <div class="container" id="question">
-    <h1>My baby baby, will you be my Valentine?</h1>
+    <h1>Will you be my Valentine?</h1>
     <button id="yes">Yes</button>
     <button id="no">No</button>
 </div>
@@ -119,7 +129,7 @@ img:hover{
 <!-- GALLERY -->
 <div class="gallery" id="gallery">
     <h1>YAY!!!</h1>
-    <p>I love you so so much</p>
+    <p>I love you so much</p>
 
     <div class="photo-row">
 
@@ -162,6 +172,8 @@ document.getElementById('yes').onclick = () => {
 
     document.getElementById('question').style.display='none';
     document.getElementById('gallery').style.display='flex';
+
+    window.scrollTo(0,0); // ensures header is visible
 };
 
 </script>
