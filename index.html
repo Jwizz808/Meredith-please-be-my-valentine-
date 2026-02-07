@@ -5,115 +5,150 @@
 <title>Be My Valentine?</title>
 
 <style>
-    body{
-        margin:0;
-        height:100vh;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        font-family:Arial, sans-serif;
-        background:linear-gradient(135deg,#ff9a9e,#fad0c4);
-        overflow:hidden;
-    }
 
-    .container{
-        text-align:center;
-    }
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    overflow:auto; /* allows scrolling */
+}
 
-    h1{
-        font-size:3rem;
-        color:white;
-    }
+/* QUESTION SCREEN */
 
-    button{
-        padding:15px 30px;
-        font-size:1.2rem;
-        border:none;
-        border-radius:10px;
-        cursor:pointer;
-        margin:20px;
-        transition:.2s;
-    }
-
-    #yes{
-        background:#4CAF50;
-        color:white;
-    }
-
-    #no{
-        background:#ff4d4d;
-        color:white;
-        position:absolute;
-    }
-
-    .gallery{
-        display:none;
-        flex-direction:column;
-        align-items:center;
-    }
-
-    img{
-        width:300px;
-        border-radius:20px;
-        margin:10px;
-        box-shadow:0 10px 25px rgba(0,0,0,.2);
-    }
-    .photo-card{
-    margin:20px;
+.container{
     text-align:center;
+}
+
+h1{
+    font-size:3rem;
+    color:white;
+}
+
+button{
+    padding:15px 30px;
+    font-size:1.2rem;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    margin:20px;
+    transition:.25s;
+}
+
+#yes{
+    background:#4CAF50;
+    color:white;
+}
+
+#yes:hover{
+    transform:scale(1.08);
+}
+
+#no{
+    background:#ff4d4d;
+    color:white;
+    position:absolute;
+}
+
+/* GALLERY */
+
+.gallery{
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+}
+
+.gallery p{
+    color:white;
+    font-size:1.4rem;
+}
+
+/* PHOTO ROW (THIS FORCES HORIZONTAL) */
+
+.photo-row{
+    display:flex;
+    justify-content:center;
+    gap:50px;
+    margin-top:30px;
+    flex-wrap:wrap; /* wraps nicely on smaller screens */
+}
+
+/* PHOTO CARDS */
+
+.photo-card{
+    width:300px;
 }
 
 .photo-card p{
     color:white;
-    font-size:1.3rem;
+    font-size:1.2rem;
     font-weight:bold;
-    margin-bottom:10px;
 }
 
-.gallery{
-    display:none;
-    flex-wrap:wrap;
-    justify-content:center;
-    align-items:center;
+/* IMAGES */
+
+img{
+    width:100%;
+    border-radius:20px;
+    margin-top:10px;
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+    transition:.3s;
 }
 
+img:hover{
+    transform:scale(1.07);
+}
 
 </style>
 </head>
 
 <body>
 
+<!-- QUESTION -->
 <div class="container" id="question">
     <h1>My baby baby, will you be my Valentine?</h1>
     <button id="yes">Yes</button>
     <button id="no">No</button>
 </div>
 
+
+<!-- GALLERY -->
 <div class="gallery" id="gallery">
     <h1>YAY!!!</h1>
     <p>I love you so so much</p>
 
-    <div class="photo-card">
-        <p>I can’t wait to see you soon</p>
-        <img src="us.jpg">
-    </div>
+    <div class="photo-row">
 
-    <div class="photo-card">
-        <p>Me knowing you're going to be my valentine</p>
-        <img src="bear.jpeg">
-    </div>
+        <div class="photo-card">
+            <p>I can’t wait to see you soon</p>
+            <img src="us.jpg">
+        </div>
 
-    <div class="photo-card">
-        <p>Me nibbling on you next weekend</p>
-        <img src="piper.jpeg">
+        <div class="photo-card">
+            <p>Me knowing you're going to be my valentine</p>
+            <img src="bear.jpeg">
+        </div>
+
+        <div class="photo-card">
+            <p>Me nibbling on you next weekend</p>
+            <img src="piper.jpeg">
+        </div>
+
     </div>
 </div>
 
 
 <script>
+
+// moving "No" button
 const noBtn = document.getElementById('no');
 
 noBtn.addEventListener('mouseover', () => {
+
     const x = Math.random() * (window.innerWidth - noBtn.clientWidth);
     const y = Math.random() * (window.innerHeight - noBtn.clientHeight);
 
@@ -121,10 +156,14 @@ noBtn.addEventListener('mouseover', () => {
     noBtn.style.top = `${y}px`;
 });
 
+
+// show gallery
 document.getElementById('yes').onclick = () => {
+
     document.getElementById('question').style.display='none';
     document.getElementById('gallery').style.display='flex';
 };
+
 </script>
 
 </body>
