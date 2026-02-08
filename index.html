@@ -157,6 +157,7 @@ img:hover{
 
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 
 <script>
@@ -182,11 +183,19 @@ noBtn.addEventListener('mouseover', () => {
 /* Show gallery */
 document.getElementById('yes').onclick = () => {
 
+    // 🎉 CONFETTI BLAST
+    confetti({
+        particleCount: 180,
+        spread: 90,
+        origin: { y: 0.6 }
+    });
+
     document.getElementById('question').style.display='none';
     document.getElementById('gallery').style.display='flex';
 
     window.scrollTo(0,0);
 };
+
 
 </script>
 
